@@ -31,24 +31,24 @@ using namespace std;
 
 const double k = 0.0001; //math const to decrease the input values 
 const double velocity = 0.05; //learning velocity
-double v11,v12,v21; //potencial activation
-double x1,x2; //inputs
-double d21, d11,d12; //local gradients
-double yd; //desired output
-double y; //net output
-double e; //output error
-int epocas;
+double v11 = 0,v12 = 0,v21 = 0; //potencial activation
+double x1 = 0,x2 = 0; //inputs
+double d21 = 0, d11 = 0,d12 = 0; //local gradients
+double yd = 0; //desired output
+double y = 0; //net output
+double e = 0; //output error
+int epocas = 0;
 //weights and bias
-double  w111,
-        w112,
-        w121,
-        w122,
-        w211,
-        w221,
-        b11,
-        b12,
-        b21,
-        Dw111,Dw112,Dw121,Dw122,Dw211,Dw221,Db11,Db12,Db21;
+double  w111 = 0,
+        w112 = 0,
+        w121 = 0,
+        w122 = 0,
+        w211 = 0,
+        w221 = 0,
+        b11 = 0,
+        b12 = 0,
+        b21 = 0,
+        Dw111 = 0,Dw112 = 0,Dw121 = 0,Dw122 = 0,Dw211 = 0,Dw221 = 0,Db11 = 0,Db12 = 0,Db21 = 0;
 
 /**
  * This function generates random weights
@@ -166,7 +166,7 @@ void learning() {
 
 int main(int argc, char** argv) {
     
-    float accuracy = y/yd;
+    float accuracy = 0;
 
 	bool check = false;  
     creator();
@@ -174,6 +174,7 @@ int main(int argc, char** argv) {
 
     do {
     	learning();
+    	accuracy = y/yd;
     } while(accuracy < 0.99);
 
     check = true;
