@@ -29,17 +29,16 @@
 //Used namespace
 using namespace std;
 
-const double k = 0.0001; //math const to decrease the input values 
-const double velocity = 0.05; //learning velocity
-double v11 = 0,v12 = 0,v21 = 0; //potencial activation
-double x1 = 0,x2 = 0; //inputs
-double d21 = 0, d11 = 0,d12 = 0; //local gradients
-double yd = 0; //desired output
-double y = 0; //net output
-double e = 0; //output error
-int epocas = 0;
+const float k = 0.0001F; //math const to decrease the input values 
+const float velocity = 0.05F; //learning velocity
+float v11 = 0,v12 = 0,v21 = 0; //potencial activation
+float x1 = 0,x2 = 0; //inputs
+float d21 = 0, d11 = 0,d12 = 0; //local gradients
+float yd = 0; //desired output
+float y = 0; //net output
+float e = 0; //output error
 //weights and bias
-double  w111 = 0,
+float  w111 = 0,
         w112 = 0,
         w121 = 0,
         w122 = 0,
@@ -105,12 +104,12 @@ void q_fim() {
     std::cout<<"\n";
 }
 
-double sigmoid(double m) {
-    return (1/(1+exp(-m)));
+float sigmoid(float m) {
+    return (float) (1/(1+exp(-m)));
 }
 
-double sigmoid_linha(double m) {
-    return (exp(-m)/(pow((1 + exp(-m)), 2)));
+float sigmoid_linha(float m) {
+    return (float) (exp(-m)/(pow((1 + exp(-m)), 2)));
 }
 
 void forward() {
@@ -156,10 +155,10 @@ void atualizacao() {
 
 
 void learning() {
-    double erro_total = 0;
+    float erro_total = 0;
     forward();
     atualizacao();
-    double E = - ((e*e)/(2));
+    float E = - ((e*e)/(2));
     std::cout<<"e= "<<e<<"  "<<" E= "<< E<<"\n\n\n";
     erro_total = erro_total + e;
 }
