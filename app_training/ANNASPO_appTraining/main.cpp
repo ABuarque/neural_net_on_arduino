@@ -88,8 +88,6 @@ void userInterface() {
     std::cout << "Digite a classe que essas caracteristicas devem pertencer (1 ou 0): " << std::endl;
     std::cout << "->";
     std::cin >> d3;
-    std::cout << "Digite a quantidade de epocas para o treinamento (1000 ou mais): " << std::endl;
-    std::cin >> epocas;
     x1 = d1 * k;
     x2 = d2 * k;
     yd = d3;
@@ -167,16 +165,16 @@ void learning() {
 }
 
 int main(int argc, char** argv) {
+    
+    float accuracy = y/yd;
 
 	bool check = false;  
-    //const int epoca=100;
-    int i=0;
     creator();
-    userInterface();
+    userInterface(); 
+
     do {
-        learning();
-        i++;
-    } while(i < epocas); 
+    	learning();
+    } while(accuracy < 0.99);
 
     check = true;
     
@@ -196,6 +194,9 @@ int main(int argc, char** argv) {
         std::cout<<"b11= " << b11 << "\n";
         std::cout<<"b12= " << b12 << "\n";
         std::cout<<"b21= " << b21 << "\n";
+
+        std::cout << "Accuracy " << accuracy << std::endl;
+        std::cout << "final error: " << e << std::endl;
     }
 
     return 0;
