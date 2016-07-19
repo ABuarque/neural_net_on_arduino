@@ -167,6 +167,7 @@ int main(int argc, char** argv) {
     
     float accuracy = 0;
     float desiredAccuracy = 0.99;
+    unsigned long int iteracoes = 0;
 
 	bool check = false;  
     creator();
@@ -175,6 +176,7 @@ int main(int argc, char** argv) {
     do {
     	learning();
     	accuracy = y/yd;
+    	iteracoes++;
     } while(accuracy < desiredAccuracy);
 
     check = true;
@@ -195,9 +197,11 @@ int main(int argc, char** argv) {
         std::cout<<"b11= " << b11 << "\n";
         std::cout<<"b12= " << b12 << "\n";
         std::cout<<"b21= " << b21 << "\n";
+        std::cout<<"---------------------\n";
 
         std::cout << "Accuracy " << accuracy << std::endl;
         std::cout << "final error: " << e << std::endl;
+        std::cout << "Iteracoes: " << iteracoes << std::endl;
     }
 
     return 0;
