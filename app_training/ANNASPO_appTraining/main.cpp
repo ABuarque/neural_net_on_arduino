@@ -30,7 +30,7 @@
 using namespace std;
 
 const float k = 0.0001F; //math const to decrease the input values 
-const float velocity = 0.05F; //learning velocity
+const float velocity = 0.5F; //learning velocity
 float v11 = 0,v12 = 0,v21 = 0; //potencial activation
 float x1 = 0,x2 = 0; //inputs
 float d21 = 0, d11 = 0,d12 = 0; //local gradients
@@ -166,7 +166,7 @@ void learning() {
 int main(int argc, char** argv) {
     
     float accuracy = 0;
-    float desiredAccuracy = 0.99;
+    float desiredAccuracy = 0.999;
     unsigned long int iteracoes = 0;
 
 	bool check = false;  
