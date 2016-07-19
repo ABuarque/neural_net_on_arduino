@@ -167,6 +167,7 @@ void learning() {
 int main(int argc, char** argv) {
     
     float accuracy = 0;
+    float desiredAccuracy = 0.99;
 
 	bool check = false;  
     creator();
@@ -175,7 +176,7 @@ int main(int argc, char** argv) {
     do {
     	learning();
     	accuracy = y/yd;
-    } while(accuracy < 0.99);
+    } while(accuracy < desiredAccuracy);
 
     check = true;
     
