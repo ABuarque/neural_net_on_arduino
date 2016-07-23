@@ -2,15 +2,7 @@
  * >This app was made for the neural net training.
  * >The net is gonna be trained to get 1 as output
  *  to represent a class (1 here) and this value will
- * be given to the master probe.  
- * 
- *
- *     !--------------------MINI TUTORIAL---------------------------!
- * <1> Turn on the probes and take notes of the read values (5 for each)
- * <2> Insert these values separed by commas on the console
- * <3> Pick up 0 or 1 to repsent the class
- * <4> Define the number of epocas (1000 or above)
- * 
+ * be given to the master probe.   
  */
 
 /* 
@@ -84,12 +76,10 @@ void userInterface() {
     std::cout << "Digite o valor de uma outra caracteristica para o primeiro objeto: " << std::endl;
     std::cout << "->";
     std::cin >> d2;
-    std::cout << "Digite a classe que essas caracteristicas devem pertencer (1 ou 0): " << std::endl;
-    std::cout << "->";
-    std::cin >> d3;
+
     x1 = d1 * k;
     x2 = d2 * k;
-    yd = d3;
+    yd = 1;
 
 }
 
@@ -119,7 +109,7 @@ void forward() {
     y = sigmoid(v21);
 }
 
-void atualizacao() {
+void update() {
     e = yd-y;
     d21 = (0-1) * e * sigmoid_linha(v21); //gradiente local da ultima camada
 
@@ -157,7 +147,7 @@ void atualizacao() {
 void learning() {
     float erro_total = 0;
     forward();
-    atualizacao();
+    update();
     float E = - ((e*e)/(2));
     std::cout<<"e= "<<e<<"  "<<" E= "<< E<<"\n\n\n";
     erro_total = erro_total + e;
@@ -167,7 +157,7 @@ int main(int argc, char** argv) {
     
     float accuracy = 0;
     float desiredAccuracy = 0.999;
-    unsigned long int iteracoes = 0;
+    unsigned long int Iterations = 0;
 
 	bool check = false;  
     creator();
@@ -176,7 +166,7 @@ int main(int argc, char** argv) {
     do {
     	learning();
     	accuracy = y/yd;
-    	iteracoes++;
+    	Iterations++;
     } while(accuracy < desiredAccuracy);
 
     check = true;
@@ -201,7 +191,7 @@ int main(int argc, char** argv) {
 
         std::cout << "Accuracy " << accuracy << std::endl;
         std::cout << "final error: " << e << std::endl;
-        std::cout << "Iteracoes: " << iteracoes << std::endl;
+        std::cout << "Iterations: " << Iterations << std::endl;
     }
 
     return 0;
